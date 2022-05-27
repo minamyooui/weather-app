@@ -42,6 +42,7 @@ function getWeather() {
   const city = input.value;
   if (input.checkValidity()) {
     processWeather(city);
+    toggleLoading();
   } else {
     input.reportValidity();
   }
@@ -61,6 +62,7 @@ function displayWeather(obj) {
   content.appendChild(pWeather);
   content.appendChild(pTemp);
   setPic(obj);
+  toggleLoading();
 }
 
 async function setPic(obj) {
@@ -83,4 +85,9 @@ async function getPic(q) {
 function clear() {
   const content = document.getElementById('content');
   content.innerHTML = '';
+}
+
+function toggleLoading() {
+  const loading = document.getElementById('loading');
+  loading.classList.toggle('hide');
 }
